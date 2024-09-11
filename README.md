@@ -1,85 +1,138 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Kapitan Bomba API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API for the "Kapitan Bomba" project, built with NestJS and TypeORM, using MySQL as the database. This API is designed to manage characters, episodes, quotes, and tags from the "Kapitan Bomba" series.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Table of Contents
 
-## Description
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Database Migrations](#database-migrations)
+- [Seeding the Database](#seeding-the-database)
+- [Project Structure](#project-structure)
+- [Available Scripts](#available-scripts)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Installation
 
-## Project setup
+1. **Clone the repository**:
 
-```bash
-$ yarn install
+   ```bash
+   git clone https://github.com/your-repo/kapitan-bomba-api.git
+   cd kapitan-bomba-api
+   ```
+
+2. **Install dependencies**:
+
+   Make sure you have `yarn` installed. Then, run:
+
+   ```bash
+   yarn install
+   ```
+
+3. **Install TypeORM CLI globally**:
+
+   ```bash
+   yarn global add typeorm ts-node
+   ```
+
+## Environment Variables
+
+Create a `.env` file in the root of your project and configure the following environment variables:
+
+```plaintext
+DB_HOST=your_database_host
+DB_PORT=your_database_port
+DB_USER=your_database_user
+DB_PASS=your_database_password
+DB_NAME=your_database_name
 ```
 
-## Compile and run the project
+## Database Migrations
+
+### Running Migrations
+
+To run database migrations, use:
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+yarn migration:run
 ```
 
-## Run tests
+### Creating a New Migration
+
+To create a new migration, use:
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+yarn migration:create
 ```
 
-## Resources
+### Generating a Migration Based on Entities
 
-Check out a few resources that may come in handy when working with NestJS:
+To automatically generate a migration based on your entities:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+yarn migration:generate
+```
 
-## Support
+### Reverting the Last Migration
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+To revert the last migration, use:
 
-## Stay in touch
+```bash
+yarn migration:revert
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Seeding the Database
+
+To seed the database with initial data, use the following command:
+
+```bash
+yarn seed
+```
+
+This script will populate the database with predefined data from the `src/database/seeds/seed-data.json` file.
+
+### Editing Seed Data
+
+You can modify the data in the `src/database/seeds/seed-data.json` file to change what initial data is loaded into the database. This file contains JSON data for characters, episodes, quotes, and tags that will be inserted by the seeding script.
+
+## Project Structure
+
+The current project structure is organized as follows:
+
+```
+src/
+├── api/
+│   ├── api.controller.ts
+│   ├── api.module.ts
+│   ├── api.service.ts
+│   └── entities/
+│       ├── characters.entities.ts
+│       ├── episodes.entities.ts
+│       ├── quotes.entities.ts
+│       ├── tags.entities.ts
+│       ├── quote-tags.entities.ts
+│       └── index.ts
+├── database/
+│   ├── data-source.ts
+│   ├── seeds/
+│   │   └── seed-data.json
+│   ├── seed.ts
+│   └── migrations/
+│       └── <timestamp>-SchemaUpdate.ts
+└── main.ts
+```
+
+## Available Scripts
+
+- **`yarn migration:create`**: Creates an empty migration file in `src/database/migrations/`.
+- **`yarn migration:generate`**: Generates a migration file based on entity changes in `src/database/migrations/`.
+- **`yarn migration:run`**: Runs all pending migrations.
+- **`yarn migration:revert`**: Reverts the last migration that was run.
+- **`yarn seed`**: Seeds the database with initial data from `src/database/seeds/seed-data.json`.
+
+## Logging and Error Handling
+
+All database operations are logged for errors, queries, and schema changes. Check the console output for any errors during migrations or seed operations.
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project is licensed under the MIT License.
