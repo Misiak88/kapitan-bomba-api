@@ -12,10 +12,10 @@ export class Episode {
   @Column()
   episode_number: number;
 
-  @Column('date')
-  air_date: string;
+  @Column({ type: 'date' })
+  air_date: Date;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   description: string;
 
   @OneToMany(() => Quote, (quote) => quote.episode)

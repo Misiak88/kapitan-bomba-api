@@ -13,7 +13,7 @@ import { ApiModule } from './api/api.module';
       host: process.env.DB_HOST,
       port: parseInt(process.env.DB_PORT, 10),
       username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
+      password: process.env.DB_PASS,
       database: process.env.DB_NAME,
       autoLoadEntities: true, // Automatyczne ładowanie encji
       synchronize: false, // Ustaw na 'false' w produkcji

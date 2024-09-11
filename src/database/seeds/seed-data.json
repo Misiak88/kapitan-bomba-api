@@ -1,0 +1,22 @@
+{
+  "characters": [
+    { "name": "John Doe", "description": "Main character of the show" },
+    { "name": "Jane Smith", "description": "Supporting character" }
+  ],
+  "episodes": [
+    { "title": "Episode 1", "episode_number": 1, "air_date": "2024-01-01", "description": "The first episode" },
+    { "title": "Episode 2", "episode_number": 2, "air_date": "2024-01-08", "description": "The second episode" }
+  ],
+  "quotes": [
+    { "quote_text": "This is a quote", "character_id": 1, "episode_id": 1, "youtube_link": "https://youtube.com/example1", "timestamp": 60 },
+    { "quote_text": "Another quote", "character_id": 2, "episode_id": 2, "youtube_link": "https://youtube.com/example2", "timestamp": 120 }
+  ],
+  "tags": [
+    { "tag_name": "Funny" },
+    { "tag_name": "Dramatic" }
+  ],
+  "quote_tags": [
+    { "quote_id": 1, "tag_id": 1 },
+    { "quote_id": 2, "tag_id": 2 }
+  ]
+}

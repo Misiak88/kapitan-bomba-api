@@ -9,7 +9,7 @@ export class Character {
   @Column()
   name: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   description: string;
 
   @OneToMany(() => Quote, (quote) => quote.character)

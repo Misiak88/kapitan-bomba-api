@@ -7,9 +7,9 @@ export class QuoteTag {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Quote)
+  @ManyToOne(() => Quote, (quote) => quote.quoteTags)
   quote: Quote;
 
-  @ManyToOne(() => Tag)
+  @ManyToOne(() => Tag, (tag) => tag.quoteTags)
   tag: Tag;
 }
