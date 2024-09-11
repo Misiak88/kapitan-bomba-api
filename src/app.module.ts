@@ -15,8 +15,8 @@ import { ApiModule } from './api/api.module';
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      autoLoadEntities: true,
-      synchronize: true, // Set to 'false' in production
+      autoLoadEntities: true, // Automatyczne ładowanie encji
+      synchronize: false, // Ustaw na 'false' w produkcji
     }),
     ApiModule,
   ],
