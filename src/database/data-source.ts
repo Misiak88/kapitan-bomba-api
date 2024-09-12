@@ -12,7 +12,7 @@ export default new DataSource({
   database: process.env.DB_NAME,
   synchronize: false,
   dropSchema: false,
-  logging: ['error', 'query', 'schema'],
+  //logging: ['error', 'query', 'schema'],
   entities: ['src/api/entities/*.entities.ts'],
   migrations: ['src/database/migrations/**/*.ts'],
   migrationsTableName: 'migration_table',

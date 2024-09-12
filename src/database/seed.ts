@@ -35,7 +35,6 @@ const seedDatabase = async () => {
       quote.quote_text = quoteData.quote_text;
       quote.youtube_link = quoteData.youtube_link;
 
-
       quote.character = characters.find(
         (char) => char.id === quoteData.character_id,
       );
