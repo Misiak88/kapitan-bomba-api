@@ -9,6 +9,7 @@ API for the "Kapitan Bomba" project, built with NestJS and TypeORM, using MySQL 
 - [Database Migrations](#database-migrations)
 - [Seeding the Database](#seeding-the-database)
 - [Project Structure](#project-structure)
+- [Database Structure](#database-structure)
 - [Available Scripts](#available-scripts)
 
 ## Installation
@@ -120,6 +121,18 @@ src/
 │       └── <timestamp>-SchemaUpdate.ts
 └── main.ts
 ```
+
+## Database Structure
+
+The database structure is organized as follows:
+
+![Database Structure](./docs/Database_Structure.png)
+
+- **Characters**: Stores characters information.
+- **Episodes**: Stores information about episodes.
+- **Quotes**: Contains quotes and references to characters and episodes.
+- **Tags**: Stores tags that can be associated with quotes.
+- **QuoteTags**: Intermediate table for many-to-many relationship between quotes and tags.
 
 ## Available Scripts
 
