@@ -1,3 +1,4 @@
+
 # Kapitan Bomba API
 
 API for the "Kapitan Bomba" project, built with NestJS and TypeORM, using MySQL as the database. This API is designed to manage characters, episodes, quotes, and tags from the "Kapitan Bomba" series.
@@ -83,17 +84,33 @@ yarn migration:revert
 
 ## Seeding the Database
 
-To seed the database with initial data, use the following command:
+There are two options to seed the database with initial data:
+
+### Option 1: Using a Migration
+
+You can use a dedicated migration to seed the database with initial data. This migration (`1726223236209-schema-update.ts`) is located in the `src/database/migrations/` folder. To run the migration and seed the data, use:
 
 ```bash
-yarn seed
+yarn migration:run
 ```
 
-This script will populate the database with predefined data from the `src/database/seeds/seed-data.json` file.
+This will apply all pending migrations, including the one that seeds the data.
 
-### Editing Seed Data
+### Option 2: Using a Seed Script
 
-You can modify the data in the `src/database/seeds/seed-data.json` file to change what initial data is loaded into the database. This file contains JSON data for characters, episodes, quotes, and tags that will be inserted by the seeding script.
+Alternatively, you can use a separate seed script (`seed.ts`) along with a JSON file (`seed-data.json`) to populate the database:
+
+1. **Run the seed script**:
+
+   ```bash
+   yarn seed
+   ```
+
+   This script will populate the database with predefined data from the `src/database/seeds/seed-data.json` file.
+
+2. **Editing Seed Data**:
+
+   You can modify the data in the `src/database/seeds/seed-data.json` file to change what initial data is loaded into the database. This file contains JSON data for characters, episodes, quotes, and tags that will be inserted by the seeding script.
 
 ## Project Structure
 
@@ -109,8 +126,9 @@ src/
 │       ├── characters.entities.ts
 │       ├── episodes.entities.ts
 │       ├── quotes.entities.ts
+│       ├── quoteCharacters.entities.ts
 │       ├── tags.entities.ts
-│       ├── quote-tags.entities.ts
+│       ├── quoteTags.entities.ts
 │       └── index.ts
 ├── database/
 │   ├── data-source.ts
@@ -118,7 +136,7 @@ src/
 │   │   └── seed-data.json
 │   ├── seed.ts
 │   └── migrations/
-│       └── <timestamp>-SchemaUpdate.ts
+│       └── 1726223236209-schema-update.ts
 └── main.ts
 ```
 
