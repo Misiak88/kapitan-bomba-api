@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Quote } from './quotes.entities';
+import { QuoteCharacter } from './quoteCharacters.entities';
 
 @Entity('characters')
 export class Character {
@@ -12,6 +12,6 @@ export class Character {
   @Column({ type: 'text', nullable: true })
   description: string;
 
-  @OneToMany(() => Quote, (quote) => quote.character)
-  quotes: Quote[];
+  @OneToMany(() => QuoteCharacter, (quoteCharacter) => quoteCharacter.character)
+  quote_characters: QuoteCharacter[];
 }

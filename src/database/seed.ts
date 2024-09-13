@@ -6,6 +6,7 @@ import {
   Quote,
   Tag,
   QuoteTag,
+  QuoteCharacter,
 } from '../api/entities/index';
 import seedData from './seeds/seed-data.json';
 
@@ -32,12 +33,10 @@ const seedDatabase = async () => {
 
     const quotes = seedData.quotes.map((quoteData) => {
       const quote = new Quote();
+      quote.id = quoteData.id; // Ustaw ID zgodnie z danymi JSON
       quote.quote_text = quoteData.quote_text;
       quote.youtube_link = quoteData.youtube_link;
-
-      quote.character = characters.find(
-        (char) => char.id === quoteData.character_id,
-      );
+      quote.timestamp = quoteData.timestamp;
       quote.episode = episodes.find((ep) => ep.id === quoteData.episode_id);
 
       return quote;
@@ -64,6 +63,19 @@ const seedDatabase = async () => {
 
     await quoteTagRepository.save(quoteTags);
     console.log('Dodano przypisania tagów do cytatów.');
+
+    // Insert QuoteCharacters
+    const quoteCharacterRepository = AppDataSource.getRepository(QuoteCharacter);
+    const quoteCharacters = seedData.quote_characters.map((qcData) => {
+      const quoteCharacter = new QuoteCharacter();
+      quoteCharacter.quote = quotes.find((q) => q.id === qcData.quote_id);
+      quoteCharacter.character = characters.find((c) => c.id === qcData.character_id);
+
+      return quoteCharacter;
+    });
+
+    await quoteCharacterRepository.save(quoteCharacters);
+    console.log('Dodano przypisania postaci do cytatów.');
 
     console.log('Seedowanie danych zakończone pomyślnie.');
     await AppDataSource.destroy();

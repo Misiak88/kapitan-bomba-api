@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { QuoteTag } from './quote_tags.entities';
+import { QuoteTag } from './quoteTags.entities';
 
 @Entity('tags')
 export class Tag {
@@ -10,5 +10,5 @@ export class Tag {
   tag_name: string;
 
   @OneToMany(() => QuoteTag, (quoteTag) => quoteTag.tag)
-  quoteTags: QuoteTag[];
+  quote_tags: QuoteTag[];
 }

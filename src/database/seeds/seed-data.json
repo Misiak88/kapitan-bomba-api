@@ -1,22 +1,28 @@
 {
   "characters": [
-    { "name": "John Doe", "description": "Main character of the show" },
-    { "name": "Jane Smith", "description": "Supporting character" }
+    { "id": 1, "name": "John Doe", "description": "Main character of the show" },
+    { "id": 2, "name": "Jane Smith", "description": "Supporting character" }
   ],
   "episodes": [
-    { "title": "Episode 1", "episode_number": 1, "air_date": "2024-01-01", "description": "The first episode" },
-    { "title": "Episode 2", "episode_number": 2, "air_date": "2024-01-08", "description": "The second episode" }
+    { "id": 1, "title": "Episode 1", "episode_number": 1, "air_date": "2024-01-01", "description": "The first episode" },
+    { "id": 2, "title": "Episode 2", "episode_number": 2, "air_date": "2024-01-08", "description": "The second episode" }
   ],
   "quotes": [
-    { "quote_text": "This is a quote", "character_id": 1, "episode_id": 1, "youtube_link": "https://youtube.com/example1", "timestamp": 60 },
-    { "quote_text": "Another quote", "character_id": 2, "episode_id": 2, "youtube_link": "https://youtube.com/example2", "timestamp": 120 }
+    { "id": 1, "quote_text": "This is a quote", "youtube_link": "https://youtube.com/example1", "timestamp": 60, "episode_id": 1 },
+    { "id": 2, "quote_text": "Another quote", "youtube_link": "https://youtube.com/example2", "timestamp": 120, "episode_id": 2 }
   ],
   "tags": [
-    { "tag_name": "Funny" },
-    { "tag_name": "Dramatic" }
+    { "id": 1, "tag_name": "Funny123123" },
+    { "id": 2, "tag_name": "Dramatic123123123" }
   ],
   "quote_tags": [
-    { "quote_id": 1, "tag_id": 1 },
-    { "quote_id": 2, "tag_id": 2 }
+    { "id": 1, "quote_id": 1, "tag_id": 1 },
+    { "id": 2, "quote_id": 2, "tag_id": 2 },
+    { "id": 3, "quote_id": 1, "tag_id": 2 },
+    { "id": 4, "quote_id": 2, "tag_id": 1 }
+  ],
+  "quote_characters": [
+    { "id": 1, "quote_id": 1, "character_id": 1 },
+    { "id": 2, "quote_id": 2, "character_id": 2 }
   ]
 }
