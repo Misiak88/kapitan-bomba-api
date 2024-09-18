@@ -1,28 +1,9 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ApiService } from './api.service';
-import { ApiController } from './api.controller';
-import {
-  Character,
-  Episode,
-  Quote,
-  Tag,
-  QuoteTag,
-  QuoteCharacter,
-} from './entities';
+import { V2Module } from './v2/v2.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([
-      Character,
-      Episode,
-      Quote,
-      Tag,
-      QuoteTag,
-      QuoteCharacter,
-    ]),
-  ],
-  controllers: [ApiController],
-  providers: [ApiService],
+  imports: [V2Module],
+  controllers: [],
+  providers: [],
 })
 export class ApiModule {}
