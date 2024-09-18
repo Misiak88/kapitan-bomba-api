@@ -1,3 +1,4 @@
+// src/api/v2/v2.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { V2Service } from './v2.service';
